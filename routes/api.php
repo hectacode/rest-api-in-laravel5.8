@@ -18,3 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('posts', 'API\PostController');
+
+
+//This one line of code will automatically generate following REST api routes for us
+//Route::get('posts', 'API\PostController@index');
+//Route::post('posts', 'API\PostController@store');
+//Route::get('posts/{id}', 'API\PostController@show');
+//Route::put('posts/{id}', 'API\PostController@update');
+//Route::delete('posts/{id}', 'API\PostController@destroy');

@@ -32,6 +32,13 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $post = new Post;
+        $post->title = $request->title;
+        $post->alias = $request->alias;
+        $post->content = $request->content;
+        $post->save();
+
+        return new PostResource($post);
     }
 
     /**
@@ -43,6 +50,9 @@ class PostController extends Controller
     public function show($id)
     {
         //
+        $post = Post::findOrFail($id);
+
+        return new PostResource($post);
     }
 
     /**
@@ -55,6 +65,14 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $post = Post::findOrFail($id);
+
+        $post->title = $request->title;
+        $post->alias = $request->alias;
+        $post->content = $request->content;
+        $post->save();
+
+        return new PostResource($post);
     }
 
     /**
@@ -66,5 +84,10 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+        $post = Post::findOrFail($id);
+
+        $post->delete();
+
+        return new PostResource($post);
     }
 }
